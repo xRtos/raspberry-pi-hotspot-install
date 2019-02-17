@@ -20,6 +20,13 @@ int main(int argc, char **argv)
 	system("sudo apt-get install dnsmasq hostapd -y");
 	system("sudo systemctl stop dnsmasq");
 	system("sudo systemctl stop hostapd");
+	printf("\nCreating a restore point");
+	system("mkdir /etc/backup");
+	system("cp /etc/dhcpcd.conf /etc/backup");
+	system("cp /etc/dnsmasq.conf /etc/backup");
+	system("cp /etc/hostapd/hostapd.conf /etc/backup");
+	system("cp /etc/default/hostapd /etc/backup");
+	system("cp /etc/sysctl.conf /etc/backup");
 	system("clear");
 	printf("\nConfiguring DHCPCD\n");
 	system("rm -rf /etc/dhcpcd.conf");
@@ -81,4 +88,3 @@ int main(int argc, char **argv)
 	system("reboot");
 
 }
-
