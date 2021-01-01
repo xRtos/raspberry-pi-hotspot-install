@@ -70,6 +70,9 @@ int main(int argc, char **argv)
 	system("rm -rf /etc/default/hostapd");
 	system("echo 'DAEMON_CONF=\"/etc/hostapd/hostapd.conf\"' >> /etc/default/hostapd");
 	printf("Starting Services...");
+	system("sudo systemctl unmask hostapd");
+	system("sudo systemctl enable hostapd");
+	system("sudo systemctl start hostapd && sudo systemctl start dnsmasq");
 	system("sudo systemctl start hostapd");
 	system("sudo systemctl start dnsmasq");
 	printf("Fixing tables");
